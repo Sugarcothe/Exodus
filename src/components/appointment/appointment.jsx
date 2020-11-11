@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Joi from 'joi-browser';
+import Form from '../common/form'
 
 
 
 
-export class Appointment extends Component {
+class Appointment extends Form {
   state = {
-    account: { 
+    data: { 
       firstname: '', 
       lastname: '',
       email: '',
@@ -29,35 +30,20 @@ export class Appointment extends Component {
       contact: Joi.number().required()
   }
 
-  validate = () => {
+ 
 
-   const result = Joi.validate(this.state.account, this.schema, { abortEarly: false});
+  
 
-    if (!result.error) return null;
 
-    const errors = {};
-    for (let item of result.error.details)
-    errors[item.path[0]] = item.message;
-  };
-
-  handleSubmit = e => {
-    e.preventDefault()
-
-    const errors = this.validate();
-    console.log(errors)
-    this.setState({ errors });
-    if (errors) return;
+  doSubmit = () => {
+    console.log('submitted')
   }
 
-  handleChange = ({ currentTarget: input }) => {
-    const account = {...this.state.account};
-    account[input.name] = input.value;
-    this.setState({ account })
 
-  }
+  
 
   render() {
-      const { account } = this.state;
+      const { data } = this.state;
 
     return (
       <div className="container bg-white text-dark p-5 ">
@@ -69,22 +55,27 @@ export class Appointment extends Component {
             {/* First Name */}
             <div className="form-group col-md-6 p-2">
               <input type="text"
-              value={account.firsttname}
+              value={data.firsttname}
               onChange={this.handleChange}
               name='first tname' 
               className="form-control" 
-              placeholder='First Name'/>
+              placeholder='First Name'
+              error='First Name is needed'
+              />
+              
               </div>
             
 
             {/* Last Name */}
             <div className="form-group col-md-6 p-2">
               <input type="text"
-              value={account.lastname}
+              value={data.lastname}
               onChange={this.handleChange}
               name='lastname' 
               className="form-control" 
-              placeholder='Last Name'/>
+              placeholder='Last Name'
+              error='Last Name is needed'/>
+              
             </div>
           </div>
 
@@ -92,21 +83,23 @@ export class Appointment extends Component {
           <div className="form-row">
             <div className="form-group col-md-6 p-2">
               <input type="text"
-              value={account.email}
+              value={data.email}
               onChange={this.handleChange}
               name='email'
               className="form-control" 
-              placeholder='Email'/>
+              placeholder='Email'
+              error='pls put you email'/>
             </div>
 
               {/* Contact */}
             <div className="form-group col-md-6 p-2">
               <input type="text" 
-              value={account.contact}
+              value={data.contact}
               onChange={this.handleChange}
               name='contact'
               className="form-control" 
-              placeholder='Contact'/>
+              placeholder='Contact'
+              error='Phone Number Name is needed'/>
             </div>
           </div>
 
@@ -114,7 +107,7 @@ export class Appointment extends Component {
           <div className="form-row">
             <div className="form-group col-md-6 p-2">
               <input type="text" 
-              value={account.requesteddate}
+              value={data.requesteddate}
               onChange={this.handleChange}
               name='requesteddate'
               className="form-control" 
@@ -124,7 +117,7 @@ export class Appointment extends Component {
               {/* Requested time */}
             <div className="form-group col-md-6 p-2">
               <input type="text" 
-              value={account.requestedtime}
+              value={data.requestedtime}
               onChange={this.handleChange}
               name='requestedtime'
               className="form-control" 
@@ -135,7 +128,7 @@ export class Appointment extends Component {
           {/* reason */}
           <div className="form-group">
               <textarea className="form-control"
-              value={account.reason}
+              value={data.reason}
               onChange={this.handleChange}
               name='reason' 
               id="exampleFormControlTextarea1" 
@@ -143,7 +136,10 @@ export class Appointment extends Component {
               placeholder='Reason For Visit?'>
               </textarea>
           </div>
-          <button className="btn btn-success btn-block">Submit</button>
+          <button 
+            disabled={this.validate(true)}
+            className="btn btn-success btn-block">Submit
+          </button>
         </form>
     </div>
     )

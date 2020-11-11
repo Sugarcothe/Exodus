@@ -14,7 +14,7 @@ class Navbar extends Component {
           </button>
 
             <div className="pt-3 row collapse navbar-collapse" id="navbarTogglerDemo01">
-              <h1 className='p-5 font-weight-bold display-5 text-warning'>RuthFoodies</h1>
+              <h1 className='pl-5 pr-5 pb-3 font-weight-bold display-5 text-warning'>ST Rebecca</h1>
             
           
 
