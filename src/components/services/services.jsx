@@ -1,11 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react'
 
-export class Index2 extends Component {
-
-
-  render() {
-    return (
-      <div className='index2-header'>
+const Services = () => {
+  return (
+    <div>
+      <div className="service1 jumbotron text-align-center p-4 p-md-5 text-white rounded ">
+      <div className="d-jumbotron display-center">
+      
+      <h1 className="container display-3 font-weight-bold">We Offer Many Different Services to Support Your Recovery Process</h1>
+      <div className='button mt-5'>
+        <div className="button btn btn-success btn-lg font-weight-bold">TALK TO A SPECIALIST <i class="fas fa-phone-square"></i></div>
+        <div className="button btn ml-3 btn-light btn-lg font-weight-bold">VIEW OUR SERVICES <i class="fas fa-user-md"></i></div>
+      </div>
+      </div>
+    </div>
+    <div className='index2-header'>
             <div class="px-3 py-3 pt-md-5 text-white pb-md-4 text-center">
                 <h1 class="display-4 font-weight-bold pt-5">Why Should You Choose Us</h1>
                 <p class="lead pb-5">We are committed to delivering an excellent quality of care to those affected by drug addiction and mental health disorders. We are industry leaders who are passionate about the people we serve and changing the quality of their lives for the better.</p>
@@ -60,13 +68,11 @@ export class Index2 extends Component {
                   </div>
                 </div>
               </div>
-            </div>
-            
-           
-            
+            </div>     
       </div>
-    )
-  }
+    </div>
+    
+  )
 }
 
-export default Index2;
+export default Services
